@@ -1,0 +1,41 @@
+.page-header
+  = link_to new_order_path, :class => 'btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    |  Ajouter une commande
+  h1 Commander
+
+.table-responsive
+  table.table.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Type
+        th
+          | Categorie
+        th
+          | Date de début
+        th
+          | Date de fin
+        th
+          | Utilisateur
+        th
+        th
+        th
+    tbody
+      - @orders.each do | order |
+        tr
+          td
+            = order.type.name
+          td
+            = order.category.name
+          td
+            = order.begin_date
+          td
+            = order.end_date
+          td
+          td
+            = link_to 'Voir', order, class: 'btn btn-default'
+          td
+            = link_to 'Modifier', edit_order_path(order), class: 'btn btn-default'
+          td
+            = link_to 'Supprimer', order, method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure?' }

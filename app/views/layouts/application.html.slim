@@ -1,20 +1,41 @@
 doctype html
-head
-  title Delivr
-  meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0' name='viewport'
-  = favicon_link_tag 'favicon.png'
-  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-  = yield(:head)
-  = csrf_meta_tags
+html
+  head
+    meta charset="utf-8"
+    title delivr
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    meta name="description" content=""
+    meta name="author" content=""
+    /! HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+    /[if lt IE 9]
+      = javascript_include_tag "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js", "https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
 
-body
-  - [:notice, :error, :alert].each do |level|
-    - unless flash[level].blank?
-      .alert.alert-dismissable class=("alert-#{flash_class(level)}")
-        button class='close' aria-hidden='true' data-dismiss='alert' type='button' ×
-        p= flash[level]
+  body
+    .navbar.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
 
-  = yield
+          = link_to "delivr", "/", :class => "navbar-brand"
 
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
-  = yield(:scripts)
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a href="#"
+                | Home
+
+      - flash.each do |name, msg|
+        = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do
+          button.close type="button" data-dismiss="alert" aria-hidden="true"
+            | &times;
+          = msg
+
+    .container
+      = yield

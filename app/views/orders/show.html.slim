@@ -1,0 +1,28 @@
+.page-header
+  = link_to edit_order_path(@order), :class => 'btn btn-primary' do
+    span.glyphicon.glyphicon-pencil
+    |  Modifier
+
+  h1 "Commande ##{@order.id}"
+
+dl.dl-horizontal
+  dt
+    | Type:
+  dd
+    = @order.type
+  dt
+    | Categorie:
+  dd
+    = @order.category
+  dt
+    | Date de début:
+  dd
+    = @order.begin_date
+  dt
+    | Date de fin:
+  dd
+    = @order.end_date
+  dt
+    | Utilisateur:
+  dd
+    = @order.user

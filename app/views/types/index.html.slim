@@ -1,0 +1,26 @@
+.page-header
+  = link_to new_type_path, :class => 'btn btn-primary' do
+    span.glyphicon.glyphicon-plus
+    |  Ajouter un type de commande
+  h1 Types de commande
+
+.table-responsive
+  table.table.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Nom
+        th
+        th
+        th
+    tbody
+      - @types.each do | type |
+        tr
+          td
+            = type.name
+          td
+            = link_to 'Voir', type, class: 'btn btn-default'
+          td
+            = link_to 'Modifier', edit_type_path(type), class: 'btn btn-default'
+          td
+            = link_to 'Supprimer', type, method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure?' }
