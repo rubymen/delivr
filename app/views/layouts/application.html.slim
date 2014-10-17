@@ -1,0 +1,20 @@
+doctype html
+head
+  title Delivr
+  meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0' name='viewport'
+  = favicon_link_tag 'favicon.png'
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+  = yield(:head)
+  = csrf_meta_tags
+
+body
+  - [:notice, :error, :alert].each do |level|
+    - unless flash[level].blank?
+      .alert.alert-dismissable class=("alert-#{flash_class(level)}")
+        button class='close' aria-hidden='true' data-dismiss='alert' type='button' ×
+        p= flash[level]
+
+  = yield
+
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = yield(:scripts)

@@ -1,0 +1,10 @@
+.DS_STORE
+/.bundle
+/config/database.yml
+/config/secrets.yml
+/coverage/*
+/log/*.log
+/public/assets
+/public/uploads/*
+/test/*
+/tmp
