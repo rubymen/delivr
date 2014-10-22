@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   respond_to :html, :json
+
+  before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
