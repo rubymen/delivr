@@ -27,6 +27,12 @@ html
 
         .collapse.navbar-collapse
           ul.nav.navbar-nav
+            li
+              = link_to('Login', new_user_session_path)
+
+            li
+              = link_to('Editer le profil', edit_user_registration_path)
+
             - if can? :read, Order
               li
                 = link_to 'Commandes', orders_path
