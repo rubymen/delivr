@@ -15,33 +15,14 @@ class PermissionsController < ApplicationController
     respond_with(@permission)
   end
 
-  def new
-    authorize! :manage, Permission
-    @permission = Permission.new
-    respond_with(@permission)
-  end
-
   def edit
     authorize! :manage, Permission
-  end
-
-  def create
-    authorize! :manage, Permission
-    @permission = Permission.new(permission_params)
-    @permission.save
-    respond_with(@permission)
   end
 
   def update
     authorize! :manage, Permission
     @permission.update(permission_params)
-    respond_with(@permission)
-  end
-
-  def destroy
-    authorize! :manage, Permission
-    @permission.destroy
-    respond_with(@permission)
+    redirect_to permissions_path
   end
 
   private

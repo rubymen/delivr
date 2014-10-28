@@ -28,18 +28,18 @@ class CategoriesController < ApplicationController
     authorize! :create, Category
     @category = Category.new(category_params)
     @category.save
-    respond_with(@category)
+    redirect_to categories_path
   end
 
   def update
     @category.update(category_params)
-    respond_with(@category)
+    redirect_to categories_path
   end
 
   def destroy
     authorize! :destroy, Category
     @category.destroy
-    respond_with(@category)
+    redirect_to categories_path
   end
 
   private

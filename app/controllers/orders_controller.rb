@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = current_user
     @order.save
-    respond_with(@order)
+    redirect_to orders_path
   end
 
   def update
@@ -43,13 +43,13 @@ class OrdersController < ApplicationController
     @order.user = current_user
     @order.update(order_params)
     @order.save
-    respond_with(@order)
+    redirect_to orders_path
   end
 
   def destroy
     authorize! :destroy, Order
     @order.destroy
-    respond_with(@order)
+    redirect_to orders_path
   end
 
   private
