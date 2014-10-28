@@ -5,15 +5,18 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize! :read, Category
     @categories = Category.all
     respond_with(@categories)
   end
 
   def show
+    authorize! :read, Category
     respond_with(@category)
   end
 
   def new
+    authorize! :create, Category
     @category = Category.new
     respond_with(@category)
   end
@@ -22,6 +25,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
+    authorize! :create, Category
     @category = Category.new(category_params)
     @category.save
     respond_with(@category)
@@ -33,6 +37,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, Category
     @category.destroy
     respond_with(@category)
   end

@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :orders
-
-  resources :types
-
+  resources :abilities
   resources :categories
-
+  resources :orders
+  resources :permissions
+  resources :types
 end

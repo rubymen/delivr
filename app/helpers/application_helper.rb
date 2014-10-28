@@ -7,4 +7,13 @@ module ApplicationHelper
       when :success then 'success'
     end
   end
+
+  def statistics_number
+    {
+      orders: Order.count,
+      types: Type.count,
+      categories: Category.count,
+      users: User.count,
+    }
+  end
 end

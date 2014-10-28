@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta charset="utf-8"
-    title delivr
+    title DelivR
     meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     meta name="description" content=""
     meta name="author" content=""
@@ -23,13 +23,22 @@ html
             span.icon-bar
             span.icon-bar
 
-          = link_to "delivr", "/", :class => "navbar-brand"
+          = link_to "Accueil", "/", :class => "navbar-brand"
 
         .collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.active
-              a href="#"
-                | Home
+            - if can? :read, Order
+              li
+                = link_to 'Commandes', orders_path
+            - if can? :read, Type
+              li
+                = link_to 'Types de commande', types_path
+            - if can? :read, Category
+              li
+                = link_to 'Catégories de commande', categories_path
+            - if can? :read, Permission
+              li
+                = link_to 'Permissions des membres', permissions_path
 
     - flash.each do |name, msg|
       = content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable" do

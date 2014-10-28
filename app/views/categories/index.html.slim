@@ -1,7 +1,9 @@
 .page-header
-  = link_to new_category_path, :class => 'btn btn-primary' do
-    span.glyphicon.glyphicon-plus
-    |  Ajouter une catégorie de commande
+  - if can? :create, Category
+    = link_to new_category_path, :class => 'btn btn-success' do
+      span.glyphicon.glyphicon-plus
+      |  Ajouter une catégorie de commande
+
   h1
     | Categories de commande
 
@@ -22,6 +24,8 @@
           td
             = link_to 'Voir', category, class: 'btn btn-default'
           td
-            = link_to 'Modifier', edit_category_path(category), class: 'btn btn-default'
+            - if can? :update, Category
+              = link_to 'Modifier', edit_category_path(category), class: 'btn btn-default'
           td
-            = link_to 'Supprimer', category, method: :delete, class: 'btn btn-default', data: { confirm: 'Certain?' }
+            - if can? :delete, Category
+              = link_to 'Supprimer', category, method: :delete, class: 'btn btn-default', data: { confirm: 'Certain?' }

@@ -1,0 +1,15 @@
+= simple_form_for(@permission) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :manager_read
+    = f.input :manager_create
+    = f.input :manager_update
+    = f.input :manager_delete
+    = f.input :member_read
+    = f.input :member_create
+    = f.input :member_update
+    = f.input :member_delete
+
+  .form-actions
+    = f.button :submit

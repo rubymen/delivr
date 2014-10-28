@@ -1,0 +1,74 @@
+.page-header
+  h1
+    | Permissions
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | Model
+        th
+          | Manager read
+        th
+          | Manager create
+        th
+          | Manager update
+        th
+          | Manager delete
+        th
+          | Member read
+        th
+          | Member create
+        th
+          | Member update
+        th
+          | Member delete
+        th
+    tbody.color-white
+      - @permissions.each do | permission |
+        tr
+          td.middle.color-black
+            = permission.model
+          td.middle style="background-color: #{permission.manager_read ? '#2ecc71' : '#e74c3c'}"
+            - if permission.manager_read
+              | ✓
+            - else
+              | ✗
+          td.middle style="background-color: #{permission.manager_create ? '#2ecc71' : '#e74c3c'}"
+            - if permission.manager_create
+              | ✓
+            - else
+              | ✗
+          td.middle style="background-color: #{permission.manager_update ? '#2ecc71' : '#e74c3c'}"
+            - if permission.manager_update
+              | ✓
+            - else
+              | ✗
+          td.middle style="background-color: #{permission.manager_delete ? '#2ecc71' : '#e74c3c'}"
+            - if permission.manager_delete
+              | ✓
+            - else
+              | ✗
+          td.middle style="background-color: #{permission.member_read ? '#2ecc71' : '#e74c3c'}"
+            - if permission.member_read
+              | ✓
+            - else
+              | ✗
+          td.middle style="background-color: #{permission.member_create ? '#2ecc71' : '#e74c3c'}"
+            - if permission.member_create
+              | ✓
+            - else
+              | ✗
+          td.middle style="background-color: #{permission.member_update ? '#2ecc71' : '#e74c3c'}"
+            - if permission.member_update
+              | ✓
+            - else
+              | ✗
+          td.middle style="background-color: #{permission.member_delete ? '#2ecc71' : '#e74c3c'}"
+            - if permission.member_delete
+              | ✓
+            - else
+              | ✗
+          td.middle
+            = link_to 'Modifier', edit_permission_path(permission), class: 'btn btn-default'

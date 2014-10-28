@@ -1,7 +1,7 @@
 = form_for(@type, :html => { :class => "form-horizontal" }) do |f|
   - if @type.errors.any?
     .alert.alert-danger.alert-dismissable
-      button.close type="button" data-dismiss="alert" aria-hidden="true" 
+      button.close type="button" data-dismiss="alert" aria-hidden="true"
         | &times;
       h4= "#{pluralize(@type.errors.count,"error")} prohibited this type from being saved:"
       ul
@@ -11,6 +11,11 @@
     = f.label :name, :class => "col-sm-2 control-label"
     .col-sm-10
       = f.text_field :name, :class => "form-control"
+
+  .form-group
+    = f.label :color, :class => "col-sm-2 control-label"
+    .col-sm-10
+      = f.color_field :color, :class => "form-control"
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit :class => "btn btn-primary"

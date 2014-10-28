@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022071847) do
+ActiveRecord::Schema.define(version: 20141027125206) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -33,10 +33,29 @@ ActiveRecord::Schema.define(version: 20141022071847) do
   add_index "orders", ["type_id"], name: "index_orders_on_type_id", using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
+  create_table "permissions", force: true do |t|
+    t.string   "model"
+    t.boolean  "admin_read"
+    t.boolean  "admin_create"
+    t.boolean  "admin_update"
+    t.boolean  "admin_delete"
+    t.boolean  "manager_read"
+    t.boolean  "manager_create"
+    t.boolean  "manager_update"
+    t.boolean  "manager_delete"
+    t.boolean  "member_read"
+    t.boolean  "member_create"
+    t.boolean  "member_update"
+    t.boolean  "member_delete"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "types", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "color"
   end
 
   create_table "users", force: true do |t|

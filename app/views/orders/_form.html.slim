@@ -1,4 +1,4 @@
-= form_for(@order, html: { :class => "form-horizontal" }) do |f|
+= simple_form_for @order, html: { :class => "form-horizontal" } do |f|
   - if @order.errors.any?
     .alert.alert-danger.alert-dismissable
       button.close type="button" data-dismiss="alert" aria-hidden="true"
@@ -7,26 +7,28 @@
       ul
         - @order.errors.full_messages.each do |msg|
           li= msg
-  .form-group
-    = f.label :type_id, class: "col-sm-2 control-label"
-    .col-sm-10
-      = select_tag :type_id, options_for_select(Type.all, :id), class: "form-control"
-  .form-group
-    = f.label :category_id, class: "col-sm-2 control-label"
-    .col-sm-10
-      = select_tag :category_id, options_for_select(Category.all, :id), class: "form-control"
-  .form-group
-    = f.label :begin_date, class: "col-sm-2 control-label"
-    .col-sm-10
-      = f.date_select :begin_date, class: "form-control"
-  .form-group
-    = f.label :end_date, class: "col-sm-2 control-label"
-    .col-sm-10
-      = f.date_select :end_date, class: "form-control"
-  .form-group
-    = f.label :user, class: "col-sm-2 control-label"
-    .col-sm-10
-      = f.text_field :user, class: "form-control"
-  .form-group
-    .col-sm-offset-2.col-sm-10
-      = f.submit class: "btn btn-primary"
+  - if can? :update, @order
+    .col-sm-5
+      .form-group
+        = f.association :type
+
+  .col-sm-5.col-sm-offset-2
+    .form-group
+      = f.association :category
+
+  .col-sm-5
+    .form-group
+      = f.input :begin_date, as: :date, html5: true
+
+  .col-sm-5.col-sm-offset-2
+    .form-group
+      = f.input :end_date, as: :date, html5: true
+
+  .col-sm-5
+    .form-group
+      = f.association :user
+
+  .col-sm-5.col-sm-offset-2
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.submit class: "btn btn-primary"

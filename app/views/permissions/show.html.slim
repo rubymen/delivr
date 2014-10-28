@@ -1,0 +1,42 @@
+.page-header
+  = link_to permissions_path, :class => 'btn btn-default' do
+    span.glyphicon.glyphicon-list-alt
+    |  Back
+  = link_to edit_permission_path(@permission), :class => 'btn btn-primary' do
+    span.glyphicon.glyphicon-pencil
+    |  Edit
+  h1
+    | Show permission
+dl.dl-horizontal
+  dt
+    | Manager read:
+  dd
+    = @permission.manager_read
+  dt
+    | Manager create:
+  dd
+    = @permission.manager_create
+  dt
+    | Manager update:
+  dd
+    = @permission.manager_update
+  dt
+    | Manager delete:
+  dd
+    = @permission.manager_delete
+  dt
+    | Member read:
+  dd
+    = @permission.member_read
+  dt
+    | Member create:
+  dd
+    = @permission.member_create
+  dt
+    | Member update:
+  dd
+    = @permission.member_update
+  dt
+    | Member delete:
+  dd
+    = @permission.member_delete

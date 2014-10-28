@@ -1,1 +1,48 @@
-h1 delivr
+.row
+  .col-sm-12.text-center
+    = image_tag 'logo.png', class: 'image-logo'
+
+- counts = statistics_number
+
+= javascript_include_tag "//www.google.com/jsapi", "chartkick"
+
+.row
+  .col-sm-3
+    .panel.panel-info
+      .panel-heading
+        h3 Commandes
+      .panel-body
+        p= "Il y à <b>#{counts[:orders]} commandes</b> sur le site".html_safe
+
+  .col-sm-3
+    .panel.panel-info
+      .panel-heading
+        h3 Types
+      .panel-body
+        p= "Il y à <b>#{counts[:types]} types</b> sur le site".html_safe
+
+  .col-sm-3
+    .panel.panel-info
+      .panel-heading
+        h3 Catégories
+      .panel-body
+        p= "Il y à <b>#{counts[:categories]} catégories</b> sur le site".html_safe
+
+  .col-sm-3
+    .panel.panel-info
+      .panel-heading
+        h3 Utilisateurs
+      .panel-body
+        p= "Il y à <b>#{counts[:users]} utilisateurs</b> sur le site".html_safe
+
+.row
+  .col-sm-6
+    .col-sm-12.text-center
+      h4 Commandes en fonction du temps :
+    .col-sm-12
+      = line_chart Order.all.order(:created_at).group('DATE(created_at)').count
+  .col-sm-6
+    .col-sm-12.text-center
+      h4 Utilisateurs en fonction du temps :
+    .col-sm-12
+      = line_chart User.all.order(:created_at).group('DATE(created_at)').count

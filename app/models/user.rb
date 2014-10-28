@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
           :rememberable,
           :trackable,
           :validatable
+
+  def to_s
+    email
+  end
 end

@@ -5,35 +5,44 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize! :read, Order
     @orders = Order.all
     respond_with(@orders)
   end
 
   def show
+    authorize! :read, @order
     respond_with(@order)
   end
 
   def new
+    authorize! :create, Order
     @order = Order.new
     respond_with(@order)
   end
 
   def edit
+    authorize! :update, Order
   end
 
   def create
-    raise params.inspect
+    authorize! :create, Order
     @order = Order.new(order_params)
+    @order.user = current_user
     @order.save
     respond_with(@order)
   end
 
   def update
+    authorize! :update, Order
+    @order.user = current_user
     @order.update(order_params)
+    @order.save
     respond_with(@order)
   end
 
   def destroy
+    authorize! :destroy, Order
     @order.destroy
     respond_with(@order)
   end
