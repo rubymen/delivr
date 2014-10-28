@@ -6,7 +6,12 @@ class OrdersController < ApplicationController
 
   def index
     authorize! :read, Order
-    @orders = Order.all
+    if params[:per_page]
+      @per_page = params[:per_page]
+    else
+      @per_page = 10
+     end
+    @orders = Order.paginate(:per_page => @per_page, :page => params[:page])
     respond_with(@orders)
   end
 

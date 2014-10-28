@@ -6,4 +6,6 @@ class Order < ActiveRecord::Base
   validates :type, presence: true
   validates :category, presence: true
   validates :user, presence: true
+
+  self.per_page = 2
 end

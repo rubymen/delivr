@@ -47,3 +47,7 @@
           td
             - if can? :delete, Order
               = link_to 'Supprimer', order, method: :delete, class: 'btn btn-default', data: { confirm: 'Are you sure?' }
+.col-sm-1
+  = select_tag :per_page, options_for_select([5,10,20], @per_page.to_i), class: 'form-control' , :onchange => "if(this.value){window.location='?per_page='+this.value;}"
+.col-sm-11
+  = will_paginate @orders, renderer: BootstrapPagination::Rails

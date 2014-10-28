@@ -6,4 +6,4 @@
 
 ## Regenerate database
 
-`rake db:drop; rake db:create; rake db:migrate`
+`rake db:drop; rake db:create; rake db:migrate; rake db:populate`
