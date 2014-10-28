@@ -1,8 +1,9 @@
 .page-header
   - if can? :create, Order
-    = link_to new_order_path, :class => 'btn btn-success' do
-      span.glyphicon.glyphicon-plus
-      |  Ajouter une commande
+    .float-right
+      = link_to new_order_path, :class => 'btn btn-success' do
+        span.glyphicon.glyphicon-plus
+        |  Ajouter une commande
 
   h1 Commandes
 
@@ -11,22 +12,22 @@
     thead
       tr
         th
-        th
+        th.text-center
           | Type
-        th
+        th.text-center
           | Categorie
-        th
+        th.text-center
           | Date de début
-        th
+        th.text-center
           | Date de fin
-        th
+        th.text-center
           | Utilisateur
         th
         th
         th
     tbody
       - @orders.each do | order |
-        tr
+        tr.text-center
           td
             .color-type style="background-color: #{order.type.color}"
           td

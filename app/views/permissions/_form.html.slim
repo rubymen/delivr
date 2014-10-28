@@ -2,14 +2,58 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :manager_read
-    = f.input :manager_create
-    = f.input :manager_update
-    = f.input :manager_delete
-    = f.input :member_read
-    = f.input :member_create
-    = f.input :member_update
-    = f.input :member_delete
+    .form-group
+      = f.check_box :manager_read, id: 'manager_read'
+      label.control-label for='manager_read'
+        span.ui
+        | manager read
+
+
+    .form-group
+      = f.check_box :manager_create, id: 'manager_create'
+      label.control-label for='manager_create'
+        span.ui
+        | manager create
+
+
+    .form-group
+      = f.check_box :manager_update, id: 'manager_update'
+      label.control-label for='manager_update'
+        span.ui
+        | manager update
+
+
+    .form-group
+      = f.check_box :manager_delete, id: 'manager_delete'
+      label.control-label for='manager_delete'
+        span.ui
+        | manager delete
+
+
+    .form-group
+      = f.check_box :member_read, id: 'member_read'
+      label.control-label for='member_read'
+        span.ui
+        | member read
+
+
+    .form-group
+      = f.check_box :member_create, id: 'member_create'
+      label.control-label for='member_create'
+        span.ui
+        | member create
+
+    .form-group
+      = f.check_box :member_update, id: 'member_update'
+      label.control-label for='member_update'
+        span.ui
+        | member update
+
+    .form-group
+      = f.check_box :member_delete, id: 'member_delete'
+      label.control-label for='member_delete'
+        span.ui
+        | Manager delete
 
   .form-actions
     = f.button :submit

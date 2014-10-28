@@ -1,13 +1,14 @@
 .page-header
   - if can? :create, Type
-    = link_to new_type_path, :class => 'btn btn-success' do
-      span.glyphicon.glyphicon-plus
-      |  Ajouter un type de commande
+    .float-right
+      = link_to new_type_path, :class => 'btn btn-success' do
+        span.glyphicon.glyphicon-plus
+        |  Ajouter un type de commande
 
   h1 Types de commande
 
 .table-responsive
-  table.table.table-bordered.table-hover
+  table.table.table-bordered.table-hover.text-center
     thead
       tr
         th
@@ -18,7 +19,7 @@
         th
     tbody
       - @types.each do | type |
-        tr
+        tr.text-center
           td
             .color-type style="background-color: #{type.color}"
           td
